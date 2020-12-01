@@ -1,25 +1,24 @@
-console.log(window.Vue);
-// import Vue from 'vue'
-// import App from './App.vue'
-//
-// Vue.config.productionTip = false
-//
-// new Vue({
-//     el: '#app'
-// })
-// eslint-disable-next-line no-undef
+console.log(window.vue)
+
+const Vue = window.Vue
+
+Vue.config.productionTip = false
+
 new Vue({
-    el:'#app',
-    render (createElement) {
-        const h = createElement;
-        return h('div',[this.n,h('button',{on:{click:this.add}},'+1')])
-      },
-    data:{
-        n:0
+    data() {
+        return {
+            n: 0
+        }
     },
-    methods:{
-        add(){
-            this.n+=1
+    template: `
+      <div class="red">
+      {{ n }}
+      <button @click="add">+1</button>
+      </div>
+    `,
+    methods: {
+        add() {
+            this.n += 1
         }
     }
-})
+}).$mount('#frank')
