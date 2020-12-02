@@ -1,32 +1,25 @@
-
 const Vue = window.Vue
 
 
 Vue.config.productionTip = false
+import Demo from "@/Demo";
 
 new Vue({
-    data() {
-        return {
-            n: 0,
-            array: [1,2,3,4,5,6,7,8]
-        }
+    components: {Demo},
+    data: {
+        visible: true
     },
     template: `
-      <div class="red">
-      {{n}}
-      <button @click="add">+1</button>
+      <div>
+
+      <button @click="toggle">toggle</button>
+      <hr>
+      <Demo v-if="visible===true"/>
       </div>
     `,
-    created() {
-        console.log("我还没出现在页面中")
-    },
-    mounted() {
-        debugger
-        console.log("我已经出现在页面中")
-    },
     methods: {
-        add() {
-            this.n += 1
-        },
-},
+        toggle() {
+            this.visible = !this.visible
+        }
+    }
 }).$mount('#frank')
